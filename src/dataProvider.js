@@ -107,6 +107,7 @@ export default (apiUrl, httpClient = fetchUtils.fetchJson) => {
         break;
       case CREATE:
         url = `${apiUrl}/${resource}`;
+        options.method = "POST";
         //duplicate data to decouple - avoid error in optimistic renderer
         const createData = JSON.parse(JSON.stringify(params.data));
         // console.log(createData);
@@ -119,11 +120,13 @@ export default (apiUrl, httpClient = fetchUtils.fetchJson) => {
           }
         }
 
-        //check if managed to select CREATE vs ADD
-        if(createData.managed) {
-          options.method = "POST";
-        } else {
-          options.method = "PUT";
+        if(resource === 'resources') {
+          //check if managed to select CREATE vs ADD
+          if(createData.managed) {
+            options.method = "POST";
+          } else {
+            options.method = "PUT";
+          }
         }
         options.body = JSON.stringify(createData);        
         break;
