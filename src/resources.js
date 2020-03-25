@@ -20,6 +20,7 @@ export const ResourceList = (props) => (
             <TextField source="id" sortable={false} />
             <TextField source="type" sortable={false} />
             <TextField source="provider" sortable={false}/>
+            <TextField source="name" sortable={false}/>
             <BooleanField source="managed" sortable={false} />
             <TextArrayField source="tags" label="tags" />            
             <ShowButton />
@@ -38,6 +39,7 @@ export const ResourceEdit = (props) => (
                 <DisabledInput source="id" />
                 <DisabledInput source="type" />
                 <DisabledInput source="provider" />
+                <DisabledInput source="name" />
             </FormTab>
             <FormTab label="properties">
                 <BooleanInput source="managed" />

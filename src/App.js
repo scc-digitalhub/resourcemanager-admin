@@ -25,12 +25,15 @@ const hasPermission = (permissions, perm) => {
 	return permissions.includes(perm);
 }
 
+//const apiUri = process.env.REACT_APP_API_URL;
+const apiUri = '/api';
+
 const App = () => (
     <Admin locale="en" 
     authProvider={authProvider} 
     loginPage={MyLoginPage} 
     i18nProvider={i18nProvider} 
-    dataProvider={dataProvider('/api')}
+    dataProvider={dataProvider(apiUri)}
     customRoutes={customRoutes}
     >
         {permissions => [

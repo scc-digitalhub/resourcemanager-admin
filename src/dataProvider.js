@@ -33,13 +33,16 @@ export default (apiUrl, httpClient = fetchUtils.fetchJson) => {
   const convertDataRequestToHTTP = (type, resource, params) => {
     let url = "";
     const token = localStorage.getItem('token');
+    const space = localStorage.getItem('space');
+
     const options = {
             headers : new Headers({
             'Accept': 'application/json'
           }),
     };
     options.headers.set('Authorization', `Bearer ${token}`);
-
+    options.headers.set('X-Space', space);
+    
     switch (type) {
       case GET_LIST: {
         const { page, perPage } = params.pagination;

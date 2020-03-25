@@ -55,7 +55,14 @@ export class AuthCallbackRoute extends Route {
         let params = queryString.parse(this.props.location.search);
         if (typeof params.token !== 'undefined') {
         	//store in localstorage
-        	localStorage.setItem("token", params.token);
+            localStorage.setItem("token", params.token);
+            
+            //parse space
+            var space = 'default';
+            if (typeof params.space !== 'undefined') {
+                space = params.space;
+            }
+            localStorage.setItem("space", space);
 
         	console.log('checkAuth success');
         	
@@ -65,7 +72,7 @@ export class AuthCallbackRoute extends Route {
             //fetch roles with token
             const request = new Request('/api/auth/user', {
                 method: 'GET',
-                headers: new Headers({ 'Content-Type': 'application/json', 'Authorization': 'Bearer '+token }),
+                headers: new Headers({ 'Content-Type': 'application/json', 'Authorization': 'Bearer '+token , 'X-Space': space}),
             })
             var permissions =  fetch(request)
             .then(response => {
