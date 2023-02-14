@@ -15,7 +15,7 @@
     "ra-tree-language-italian": "^2.5.0",
     "ra-tree-ui-materialui": "^2.8.5",
     "react": "^16.8.6",
-    "react-admin": "^2.9.0",
+    "react-admin": "^3.19.12",
     "react-dom": "^16.8.6",
     "react-scripts": "^3.0.1"
   },
